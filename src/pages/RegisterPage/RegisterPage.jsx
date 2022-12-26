@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { userRegister } from "../../redux/operations/userOperations";
 
 export const RegisterPage = () => {
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
   const [group, setGroup] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch()
 
   const onInputChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -36,7 +40,7 @@ export const RegisterPage = () => {
       password,
     };
 
-    console.log(registerData);
+    dispatch(userRegister(registerData));
 
     setFirstName("");
     setSecondName("");
