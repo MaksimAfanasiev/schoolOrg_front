@@ -1,10 +1,14 @@
 import { NavLink } from "react-router-dom";
-// import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
+import { selectIsLoggedIn } from "../../redux/selectors/userSelectors";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../../redux/operations/userOperations";
 
 export const Layout = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
+
   return (
     <>
       <header>
@@ -20,6 +24,11 @@ export const Layout = () => {
                 </li>
                 <li>
                   <NavLink to={"/user/account"}>Account</NavLink>
+                </li>
+                <li>
+                  <button type="button" onClick={() => dispatch(userLogout())}>
+                    Logout
+                  </button>
                 </li>
               </div>
             ) : (
