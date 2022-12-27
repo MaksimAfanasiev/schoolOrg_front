@@ -8,7 +8,7 @@ export const RegisterPage = () => {
   const [group, setGroup] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onInputChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -30,7 +30,7 @@ export const RegisterPage = () => {
     }
   };
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
 
     const registerData = {
