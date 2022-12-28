@@ -70,7 +70,6 @@ const userSlice = createSlice({
 
     builder
       .addCase(userLogout.pending, (state) => {
-        state.user = null;
         state.isLoading = true;
         state.errorValue = null;
         state.token = null;
@@ -84,7 +83,7 @@ const userSlice = createSlice({
           state.isLoggedIn = false;
         }
       })
-      .addCase(userLogin.rejected, (state, action) => {
+      .addCase(userLogout.rejected, (state, action) => {
         state.user = null;
         state.isLoading = false;
         state.errorValue = action.payload;

@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { userLogin } from "../../redux/operations/userOperations";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
 export const LoginPage = () => {
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
   const [group, setGroup] = useState("");
   const [password, setPassword] = useState("");
-
-  console.log(axios.defaults.headers.common.Authorization);
 
   const dispatch = useDispatch();
 

@@ -9,6 +9,8 @@ export const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
+  // const onLogoutClick = (e) => {};
+
   return (
     <>
       <header>
@@ -20,10 +22,10 @@ export const Layout = () => {
             {isLoggedIn ? (
               <div>
                 <li>
-                  <NavLink to={"/user/planner"}>Planner</NavLink>
+                  <NavLink to={"/planner"}>Planner</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/user/account"}>Account</NavLink>
+                  <NavLink to={"/account"}>Account</NavLink>
                 </li>
                 <li>
                   <button type="button" onClick={() => dispatch(userLogout())}>
