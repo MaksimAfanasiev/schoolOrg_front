@@ -51,3 +51,15 @@ export const userLogout = createAsyncThunk(
     }
   }
 );
+
+export const userCurrent = createAsyncThunk("user/current", async (_, thunkAPI) => {
+  try {
+    const response = await axios.get("api/v1/user/current");
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue({
+      status: error.response.status,
+      data: error.response.data,
+    })
+  }
+})

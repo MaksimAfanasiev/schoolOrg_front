@@ -3,6 +3,7 @@ import {
   userRegister,
   userLogin,
   userLogout,
+  userCurrent,
 } from "../operations/userOperations";
 
 const initialState = {
@@ -89,7 +90,27 @@ const userSlice = createSlice({
         state.errorValue = action.payload;
         state.token = null;
       });
+
+    builder
+      .addCase(userCurrent.pending, (state) => {
+        state.isLoading = true;
+        state.errorValue = null;
+      })
+      .addCase(userCurrent.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.user = action.payload;
+        state.isLoading=false;
+        state.errorValue=null;
+      })
+      .addCase(userCurrent.rejected, (state, action) => {
+        state.user = null;
+        state.isLoading = false;
+        state.errorValue = action.payload;
+        state.token = null;
+      });
   },
+
+
 });
 
 export const userReducer = userSlice.reducer;
