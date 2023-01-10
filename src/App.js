@@ -6,6 +6,7 @@ import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 import { AccountPage } from "./pages/AccountPage/AccountPage";
 import { CoursesPage } from "./pages/CoursesPage/CoursesPage";
 import { CollectionPage } from "./pages/CollectionPage/CollectionPage";
+import { PlannerPage } from "./pages/PlannerPage/PlannerPage";
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
           <Route path="courses" element={<CoursesPage />} />
           <Route path="collection" element={<CollectionPage />} />
         </Route>
+        <Route path="planner" element={<PlannerPage />} />
         
-        {/* <Route path="planner" element={<PlannerPage />} /> */}
       </Route>
     </Routes>
   );
