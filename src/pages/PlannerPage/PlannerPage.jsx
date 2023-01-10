@@ -1,15 +1,30 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom";
+import { selectDays } from "../../redux/selectors/plannerSelectors";
+import { selectIsLoggedIn } from "../../redux/selectors/userSelectors";
+import { getDays } from "../../redux/operations/plannerOperations";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 
 export const PlannerPage = () => {
+    const isLoggedIn = useSelector(selectIsLoggedIn);
+    const days = useSelector(selectDays);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {dispatch(getDays())}, [dispatch])
+
     return (
-    <ul>
-        <li><Link to={"mon"}>Monday</Link></li>
-        <li><Link to={"tue"}>Tuesday</Link></li>
-        <li><Link to={"wed"}>Wednesday</Link></li>
-        <li><Link to={"th"}>Thursday</Link></li>
-        <li><Link to={"fr"}>Friday</Link></li>
-        <li><Link to={"sat"}>Saturday</Link></li>
-        <li><Link to={"sun"}>Sunday</Link></li>
-    </ul>
+        <>
+            {isLoggedIn
+                ?
+                <ul>
+                    {days.map(day => <li key={day._id}><Link to={`${day._id}`}>{day.day}</Link></li>)}
+                </ul>
+                :
+                <Navigate to={"/"} />
+            }
+            
+            </>
     )
 }
